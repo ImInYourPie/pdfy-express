@@ -1,10 +1,6 @@
 ARG PORT
 
-
 FROM node:16-alpine
-
-RUN echo ${PORT}
-
 
 WORKDIR /user/src/app
 
