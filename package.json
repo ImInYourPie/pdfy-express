@@ -2,6 +2,9 @@
 	"name": "pdfy-express",
 	"version": "1.0.0",
 	"description": "",
+	"engines": {
+		"yarn": ">=1.22 <2.x"
+	},
 	"main": "index.js",
 	"scripts": {
 		"dev": "yarn build:dev",
@@ -10,7 +13,8 @@
 		"docker:prod": "docker-compose -f docker-compose.prod.yml up",
 		"docker:dev": "docker-compose -f docker-compose.dev.yml up",
 		"docker:stop": "docker-compose down",
-		"docker:rebuild-dev": "docker-compose -f docker-compose.dev.yml rebuild",
+		"docker:build-dev": "docker-compose -f docker-compose.dev.yml build",
+		"docker:build-prod": "docker-compose -f docker-compose.prod.yml build",
 		"build:dev": "NODE_ENV=development webpack --watch",
 		"build:prod": "NODE_ENV=production webpack"
 	},
@@ -18,21 +22,21 @@
 	"license": "MIT",
 	"dependencies": {
 		"dotenv": "^16.0.3",
-		"express": "^4.18.2"
+		"eslint": "^8.39.0",
+		"express": "^4.18.2",
+		"nodemon-webpack-plugin": "^4.8.1",
+		"ts-loader": "^9.4.2",
+		"webpack": "^5.81.0",
+		"webpack-cli": "^5.0.2",
+		"webpack-node-externals": "^3.0.0"
 	},
 	"devDependencies": {
 		"@types/express": "^4.17.17",
 		"@types/node": "^18.16.1",
 		"@typescript-eslint/eslint-plugin": "^5.59.1",
 		"@typescript-eslint/parser": "^5.59.1",
-		"eslint": "^8.39.0",
 		"nodemon": "^2.0.22",
-		"nodemon-webpack-plugin": "^4.8.1",
-		"ts-loader": "^9.4.2",
 		"ts-node": "^10.9.1",
-		"typescript": "^5.0.4",
-		"webpack": "^5.81.0",
-		"webpack-cli": "^5.0.2",
-		"webpack-node-externals": "^3.0.0"
+		"typescript": "^5.0.4"
 	}
 }
