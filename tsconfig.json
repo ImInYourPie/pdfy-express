@@ -12,6 +12,8 @@
 		"strict": true,
 		"skipLibCheck": true,
 		"sourceMap": true,
-		"paths": {}
+		"paths": {
+			"@infrastructure": ["./infrastructure"]
+		}
 	}
 }

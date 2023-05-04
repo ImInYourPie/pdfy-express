@@ -6,5 +6,6 @@ module.exports = {
 		"@controllers": path.resolve("src/controllers"),
 		"@models": path.resolve("src/models"),
 		"@repositories": path.resolve("src/repositories"),
+		"@infrastructure": path.resolve("src/infrastructure"),
 	},
 };
