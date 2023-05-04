@@ -1,13 +1,14 @@
 version: "3"
 
 services:
-  app:
+  app-prod:
     build:
       context: .
       dockerfile: Dockerfile
     env_file:
-      - .env
+      - .env.production.local
     volumes:
       - /user/src/app/node_modules
     ports:
       - ${PORT}:${PORT}
+    command: yarn start
