@@ -1,7 +1,10 @@
-import express from "express";
+import { RequestHandler } from "express";
+
+export abstract class Controllers {}
 
 export default interface IModule {
 	method: "get" | "post" | "put" | "delete" | "patch";
 	path: string;
-	controller: express.RequestHandler;
+	modulePath: string;
+	controller: RequestHandler;
 }

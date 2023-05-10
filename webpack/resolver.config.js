@@ -3,9 +3,10 @@ const path = require("path");
 module.exports = {
 	extensions: [".ts", ".tsx", ".js"],
 	alias: {
-		"@controllers": path.resolve("src/controllers"),
-		"@models": path.resolve("src/models"),
+		"@infrastructure": path.resolve("infrastructure"),
+		"@modules": path.resolve("src/modules"),
 		"@repositories": path.resolve("src/repositories"),
-		"@infrastructure": path.resolve("src/infrastructure"),
+		"@models": path.resolve("src/models"),
+		"@libs": path.resolve("src/libs"),
 	},
 };

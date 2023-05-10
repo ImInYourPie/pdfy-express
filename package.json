@@ -5,8 +5,9 @@
 	"engines": {
 		"yarn": ">=1.22 <2.x"
 	},
-	"main": "index.js",
+	"main": "dist/app.js",
 	"scripts": {
+		"test": "jest",
 		"dev": "yarn build:dev",
 		"start": "pm2-runtime dist/app.js",
 		"prestart": "yarn build:prod",
@@ -15,8 +16,8 @@
 		"docker:stop": "docker-compose down",
 		"docker:build-dev": "docker-compose -f docker-compose.dev.yml build",
 		"docker:build-prod": "docker-compose -f docker-compose.prod.yml build",
-		"build:dev": "NODE_ENV=development webpack --watch",
-		"build:prod": "NODE_ENV=production webpack"
+		"build:dev": "cross-env NODE_ENV=development webpack --watch",
+		"build:prod": "croos-env NODE_ENV=production webpack"
 	},
 	"author": "Miguel Melo (iminyourpie@gmail.com)",
 	"license": "MIT",
@@ -31,11 +32,21 @@
 		"webpack-node-externals": "^3.0.0"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.21.8",
+		"@babel/preset-env": "^7.21.5",
+		"@babel/preset-typescript": "^7.21.5",
 		"@types/express": "^4.17.17",
+		"@types/jest": "^29.5.1",
 		"@types/node": "^18.16.1",
+		"@types/webpack": "^5.28.1",
+		"@types/webpack-env": "^1.18.0",
 		"@typescript-eslint/eslint-plugin": "^5.59.1",
 		"@typescript-eslint/parser": "^5.59.1",
+		"babel-loader": "^9.1.2",
+		"cross-env": "^7.0.3",
+		"jest": "^29.5.0",
 		"nodemon": "^2.0.22",
+		"ts-jest": "^29.1.0",
 		"ts-node": "^10.9.1",
 		"typescript": "^5.0.4"
 	}

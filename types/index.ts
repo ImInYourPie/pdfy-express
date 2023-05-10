@@ -1,3 +1,20 @@
-import { IModule } from "./modules";
+import IConstructable from "./constructable.type";
 
-export { IModule };
+import {
+	IModuleLoader,
+	IModule,
+	IMiddlewareLoader,
+	IControllerLoader,
+	IBundleLoader,
+	Controllers,
+} from "./modules";
+
+export {
+	IConstructable,
+	IModuleLoader,
+	IModule,
+	IMiddlewareLoader,
+	IControllerLoader,
+	IBundleLoader,
+	Controllers,
+};

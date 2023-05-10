@@ -1,5 +1,5 @@
 const path = require("path");
 
 module.exports = {
-	main: path.resolve("src", "index.ts"),
+	main: path.resolve("index.ts"),
 };
