@@ -31,11 +31,6 @@ class ExpressServer {
 	}
 
 	private setModules(): void {
-		console.log(
-			"🚀 ~ file: express-server.ts:37 ~ ExpressServer ~ this.moduleLoader.modules.forEach ~ this.moduleLoader.modules:",
-			this.moduleLoader.modules,
-		);
-
 		this.moduleLoader.modules.forEach((module) => {
 			return this.app[module.method || "get"](module.path, module.controller);
 		});
