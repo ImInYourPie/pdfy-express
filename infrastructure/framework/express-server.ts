@@ -1,4 +1,10 @@
-import express, { Express, Request, Response, NextFunction } from "express";
+import express, {
+	Express,
+	Request,
+	Response,
+	NextFunction,
+	ErrorRequestHandler,
+} from "express";
 import { IModelLoader, IModuleLoader } from "@types";
 
 class ExpressServer {
@@ -14,6 +20,7 @@ class ExpressServer {
 		this.app = this.initApp();
 		this.setModels();
 		this.setModules();
+		this.setErrorHandler();
 	}
 
 	public static getInstance(
@@ -33,6 +40,7 @@ class ExpressServer {
 
 	private initApp(): Express {
 		const app = express();
+		app.use(express.json());
 		return app;
 	}
 
@@ -47,6 +55,25 @@ class ExpressServer {
 		this.moduleLoader.modules.forEach((module) => {
 			return this.app[module.method || "get"](module.path, module.controller);
 		});
+	}
+
+	private setErrorHandler(): void {
+		const errorHandler: ErrorRequestHandler = (
+			err: any,
+			req: Request,
+			res: Response,
+			next: NextFunction,
+		) => {
+			const statusCode = err.statusCode || 500;
+
+			res.status(statusCode).send({
+				error: {
+					message: err.message,
+				},
+			});
+		};
+
+		this.app.use(errorHandler);
 	}
 }
 
