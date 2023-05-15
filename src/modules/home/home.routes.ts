@@ -4,4 +4,9 @@ export default [
 		method: "get",
 		controller: "index",
 	},
+	{
+		path: "/:uid",
+		method: "get",
+		controller: "index",
+	},
 ];
