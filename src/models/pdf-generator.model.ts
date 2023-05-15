@@ -1,6 +1,7 @@
 import puppeteer, { Browser } from "puppeteer";
 import handlebars from "handlebars";
 import fs from "fs";
+import path from "path";
 
 class PDFGenerator {
 	private browser!: Browser;
@@ -13,21 +14,23 @@ class PDFGenerator {
 		this.browser = await puppeteer.launch();
 	}
 
-	async generatePDF(
-		htmlFilePath: string,
-		handlebarsData: any,
-		pdfFilePath: string,
-	) {
-		const html = fs.readFileSync(htmlFilePath, "utf-8");
+	async generatePDF(filename: string, handlebarsData: any): Promise<Buffer> {
+		const html = fs.readFileSync(
+			path.resolve("src/assets", `${filename}.handlebars`),
+			"utf-8",
+		);
 		const template = handlebars.compile(html);
 		const compiledHtml = template(handlebarsData);
 
-		const page = await this.browser.newPage();
+		const browser = await puppeteer.launch({ headless: true });
+		const page = await browser.newPage();
 		await page.setContent(compiledHtml);
 
-		await page.pdf({ path: pdfFilePath, format: "A4" });
+		const pdfBuffer = await page.pdf({ format: "A4" });
 
-		await page.close();
+		await browser.close();
+
+		return pdfBuffer;
 	}
 
 	async close() {

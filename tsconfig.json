@@ -24,7 +24,9 @@
 			"@models/": ["src/models"],
 			"@models/*": ["src/models/*"],
 			"@libs/": ["src/libs"],
-			"@libs/*": ["src/libs/*"]
+			"@libs/*": ["src/libs/*"],
+			"@assets/": ["src/assets"],
+			"@assets/*": ["src/assets/*"]
 		}
 	}
 }
