@@ -13,6 +13,7 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"types": ["express", "jest", "webpack", "webpack-env"],
+		"typeRoots": ["./types"],
 		"paths": {
 			"@types": ["types"],
 			"@types/*": ["types/*"],
@@ -23,7 +24,9 @@
 			"@models/": ["src/models"],
 			"@models/*": ["src/models/*"],
 			"@libs/": ["src/libs"],
-			"@libs/*": ["src/libs/*"]
+			"@libs/*": ["src/libs/*"],
+			"@assets/": ["src/assets"],
+			"@assets/*": ["src/assets/*"]
 		}
 	}
 }

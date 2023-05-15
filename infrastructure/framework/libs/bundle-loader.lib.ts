@@ -49,34 +49,56 @@ class BundleLoader implements IBundleLoader {
 	}
 
 	private init(): void {
-		this.routes = this.context
-			.keys()
-			.map((p: string) => {
-				const asset = this.context(p).routes;
+		this.routes = this.fixOrder(
+			this.context
+				.keys()
+				.map((p: string) => {
+					const asset = this.context(p).routes;
 
-				return asset
-					.keys()
-					.map((p: string) => asset(p).default)
-					.map((routes: any[]) => {
-						return routes.map((route: any) => {
-							return {
-								...route,
-								modulePath: this.getModulePath(this.context),
-								moduleName: this.getModuleName(this.context),
-							};
+					return asset
+						.keys()
+						.map((p: string) => asset(p).default)
+						.map((routes: any[]) => {
+							return routes.map((route: any) => {
+								console.log(`${route}`, asset);
+								return {
+									...route,
+									modulePath: this.getModulePath(p),
+									moduleName: this.getModuleName(asset.keys()[0]),
+								};
+							});
 						});
-					});
-			})
-			.flat()
-			.flat();
+				})
+				.flat()
+				.flat(),
+		);
 	}
 
-	private getModuleName(asset: __WebpackModuleApi.RequireContext): string {
-		return asset.keys()[0].replace("./", "").split("/")[0];
+	private getModuleName(asset: string): string {
+		return asset.replace("./", "").split(".")[0];
 	}
 
-	private getModulePath(asset: __WebpackModuleApi.RequireContext): string {
-		return asset.keys()[0];
+	private getModulePath(asset: string): string {
+		return asset.replace("./", "");
+	}
+
+	private fixOrder(routes: any[]): any[] {
+		if (routes.length === 0) return routes;
+
+		const wildCardRoutes = routes.filter((route) => ~route.path.indexOf(":"));
+		const regRoutes = routes.filter((route) => !~route.path.indexOf(":"));
+
+		wildCardRoutes.sort((a, b) => {
+			const bAddend = ~b.path.indexOf("(") ? 1 : 0;
+			const aAddend = ~a.path.indexOf("(") ? 1 : 0;
+			return (
+				b.path.split(":").length +
+				bAddend -
+				(a.path.split(":").length + aAddend)
+			);
+		});
+
+		return regRoutes.concat(wildCardRoutes);
 	}
 }
 

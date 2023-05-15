@@ -8,5 +8,6 @@ module.exports = {
 		"@repositories": path.resolve("src/repositories"),
 		"@models": path.resolve("src/models"),
 		"@libs": path.resolve("src/libs"),
+		"@assets": path.resolve("src/assets"),
 	},
 };

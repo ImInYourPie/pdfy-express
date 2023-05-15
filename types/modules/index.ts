@@ -3,6 +3,7 @@ import IModule, { Controllers } from "./module.type";
 import IMiddlewareLoader from "./middleware-loader.type";
 import IControllerLoader from "./controller-loader.type";
 import IBundleLoader from "./bundle-loader.type";
+import IModelLoader from "./model-loader.type";
 
 export {
 	IModuleLoader,
@@ -11,4 +12,5 @@ export {
 	IControllerLoader,
 	IBundleLoader,
 	Controllers,
+	IModelLoader,
 };

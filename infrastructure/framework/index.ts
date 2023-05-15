@@ -1,5 +1,10 @@
 import ExpressServer from "./express-server";
-import { BundleLoader, ControllerLoader, MiddlewareLoader } from "./libs";
+import {
+	BundleLoader,
+	ControllerLoader,
+	MiddlewareLoader,
+	ModelLoader,
+} from "./libs";
 import ModuleLoader from "./modules";
 
 const moduleLoader = ModuleLoader.getInstance(
@@ -11,4 +16,7 @@ const moduleLoader = ModuleLoader.getInstance(
 	),
 );
 
-export default ExpressServer.getInstance(moduleLoader).getApp();
+export default ExpressServer.getInstance(
+	moduleLoader,
+	new ModelLoader(),
+).getApp();

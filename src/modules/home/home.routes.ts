@@ -5,13 +5,8 @@ export default [
 		controller: "index",
 	},
 	{
-		path: "/:id",
+		path: "/:uid",
 		method: "get",
-		controller: "withParams",
-	},
-	{
-		path: "/test",
-		method: "get",
-		controller: "test",
+		controller: "index",
 	},
 ];
