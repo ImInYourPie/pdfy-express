@@ -2,16 +2,28 @@
 	"compilerOptions": {
 		"allowJs": true,
 		"noImplicitAny": true,
-		"target": "es5",
-		"module": "es6",
+		"target": "ESNext",
+		"module": "NodeNext",
 		"moduleResolution": "node",
-		"baseUrl": "./src",
+		"baseUrl": "./",
 		"outDir": "./dist/",
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
 		"skipLibCheck": true,
 		"sourceMap": true,
-		"paths": {}
+		"types": ["express", "jest", "webpack", "webpack-env"],
+		"paths": {
+			"@types": ["types"],
+			"@types/*": ["types/*"],
+			"@infrastructure": ["infrastructure"],
+			"@infrastructure/*": ["infrastructure/*"],
+			"@modules/": ["src/modules"],
+			"@modules/*": ["src/modules/*"],
+			"@models/": ["src/models"],
+			"@models/*": ["src/models/*"],
+			"@libs/": ["src/libs"],
+			"@libs/*": ["src/libs/*"]
+		}
 	}
 }
