@@ -60,7 +60,6 @@ class BundleLoader implements IBundleLoader {
 						.map((p: string) => asset(p).default)
 						.map((routes: any[]) => {
 							return routes.map((route: any) => {
-								console.log(`${route}`, asset);
 								return {
 									...route,
 									modulePath: this.getModulePath(p),
