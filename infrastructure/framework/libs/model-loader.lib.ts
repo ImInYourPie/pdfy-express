@@ -1,8 +1,8 @@
-import { IModelLoader } from "@types";
+import { IModelLoader, IModels } from "@types";
 
 class ModelLoader implements IModelLoader {
 	private assets: any;
-	private values: {} = {};
+	private values!: IModels;
 
 	constructor() {
 		this.init();
@@ -18,7 +18,7 @@ class ModelLoader implements IModelLoader {
 		}, {});
 	}
 
-	public getValues(): {} {
+	public getValues(): IModels {
 		return this.values;
 	}
 }

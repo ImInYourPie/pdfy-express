@@ -10,6 +10,8 @@ import {
 	Controllers,
 } from "./modules";
 
+import { IModels, IPDFGenerator } from "./models";
+
 export {
 	IConstructable,
 	IModuleLoader,
@@ -19,4 +21,6 @@ export {
 	IBundleLoader,
 	IModelLoader,
 	Controllers,
+	IModels,
+	IPDFGenerator,
 };
