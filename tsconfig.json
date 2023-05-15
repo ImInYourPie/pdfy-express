@@ -13,6 +13,7 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"types": ["express", "jest", "webpack", "webpack-env"],
+		"typeRoots": ["./types"],
 		"paths": {
 			"@types": ["types"],
 			"@types/*": ["types/*"],

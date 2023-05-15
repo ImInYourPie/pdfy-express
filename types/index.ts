@@ -6,6 +6,7 @@ import {
 	IMiddlewareLoader,
 	IControllerLoader,
 	IBundleLoader,
+	IModelLoader,
 	Controllers,
 } from "./modules";
 
@@ -16,5 +17,6 @@ export {
 	IMiddlewareLoader,
 	IControllerLoader,
 	IBundleLoader,
+	IModelLoader,
 	Controllers,
 };
