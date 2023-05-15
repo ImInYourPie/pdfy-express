@@ -6,12 +6,8 @@ import path from "path";
 class PDFGenerator {
 	private browser!: Browser;
 
-	constructor() {
-		this.init();
-	}
-
 	async init() {
-		this.browser = await puppeteer.launch();
+		this.browser = await puppeteer.launch({ headless: true });
 	}
 
 	async generatePDF(filename: string, handlebarsData: any): Promise<Buffer> {
@@ -22,13 +18,12 @@ class PDFGenerator {
 		const template = handlebars.compile(html);
 		const compiledHtml = template(handlebarsData);
 
-		const browser = await puppeteer.launch({ headless: true });
-		const page = await browser.newPage();
+		const page = await this.browser.newPage();
 		await page.setContent(compiledHtml);
 
 		const pdfBuffer = await page.pdf({ format: "A4" });
 
-		await browser.close();
+		await this.close();
 
 		return pdfBuffer;
 	}
