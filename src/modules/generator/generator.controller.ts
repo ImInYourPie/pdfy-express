@@ -3,14 +3,18 @@ import { Request, Response } from "express";
 abstract class Generator {
 	public static async index(req: Request, res: Response): Promise<Response> {
 		const { PDFGenerator } = req.models;
+		const { data } = req.body;
 
 		const generator = new PDFGenerator();
 
 		await generator.init();
 
-		const buffer = await generator.generatePDF("test", {
-			users: [{ name: "Miguel Melo", hours: 40 }],
-		});
+		const buffer = await generator.generatePDF(
+			"test",
+			data || {
+				users: [{ name: "Miguel Melo", hours: 40 }],
+			},
+		);
 
 		await generator.close();
 
