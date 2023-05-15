@@ -6,8 +6,6 @@ import path from "path";
 class PDFGenerator {
 	private browser!: Browser;
 
-	constructor() {}
-
 	async init() {
 		this.browser = await puppeteer.launch({ headless: true });
 	}
